@@ -1,0 +1,24 @@
+.deleteBookingModal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.deleteBookingModal h2 {
+  color: #dbdbdb;
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.description {
+  margin-bottom: 48px;
+  margin-top: 20px;
+}

@@ -1,0 +1,22 @@
+.select {
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  color: #dbdbdb;
+}
+
+.select:focus-visible {
+  outline: none;
+}
+
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #ccc;
+}

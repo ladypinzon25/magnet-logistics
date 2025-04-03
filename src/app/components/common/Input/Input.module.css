@@ -1,0 +1,27 @@
+.input {
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  color: #ededed;
+}
+
+.input::placeholder {
+  color: #919191;
+}
+
+.input:focus-visible {
+  outline: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #ccc;
+}

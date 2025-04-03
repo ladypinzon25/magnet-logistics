@@ -1,0 +1,26 @@
+.status {
+  display: inline-block;
+  text-transform: capitalize;
+  box-shadow: 0 0 2px 0 #0000001f, 0 2px 4px 0 #00000024;
+  font-size: 14px;
+  opacity: 0.9;
+  border-radius: 16px;
+  padding: 4px 8px;
+  color: white;
+}
+
+.status.inTransit {
+  background-color: #807e7e;
+}
+
+.status.delivered {
+  background-color: var(--success-color);
+}
+
+.status.pending {
+  background-color: var(--warning-color);
+}
+
+.status.cancelled {
+  background-color: var(--error-color);
+}

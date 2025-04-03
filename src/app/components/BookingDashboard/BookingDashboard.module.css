@@ -1,0 +1,75 @@
+.bookingList {
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px;
+  height: 100vh;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.bookingList h1 {
+  padding: 8px;
+  color: #ededed;
+}
+
+.origin,
+.destination {
+  text-align: left;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 16px;
+  max-width: 956px;
+}
+
+.desktopList {
+  display: none;
+  overflow-y: auto;
+}
+
+.mobileList {
+  display: flex;
+  overflow-y: auto;
+  padding-bottom: 48px;
+}
+
+.noBookingsFound {
+  font-size: 18px;
+  margin-top: 32px;
+}
+
+@media (min-width: 868px) {
+  .desktopList {
+    display: flex;
+  }
+
+  .mobileList {
+    display: none;
+  }
+
+  .actions {
+    flex-direction: row;
+    align-items: unset;
+    justify-content: space-between;
+  }
+
+  .bookingList h1 {
+    padding: 16px;
+  }
+}

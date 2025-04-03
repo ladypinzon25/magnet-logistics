@@ -1,0 +1,48 @@
+.tableContainer {
+  overflow-y: auto;
+  width: 100%;
+  padding-bottom: 48px;
+  max-width: 956px;
+}
+
+.bookingTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.bookingTable th,
+.bookingTable td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--primary-color);
+  vertical-align: top;
+  text-align: center;
+}
+
+.bookingTable th {
+  position: sticky;
+  top: 0;
+  background-color: #00151c;
+  z-index: 1;
+}
+
+.bookingTable th:first-child {
+  border-top-left-radius: 6px;
+}
+
+.bookingTable th:last-child {
+  border-top-right-radius: 6px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.productImage {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 0 #0000001f, 0 2px 4px 0 #00000040;
+}
