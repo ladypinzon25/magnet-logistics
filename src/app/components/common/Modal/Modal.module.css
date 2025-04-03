@@ -12,7 +12,7 @@
   background: #012936;
   padding: 2rem;
   border-radius: 12px;
-  min-width: 360px;
+  min-width: 300px;
   max-width: 500px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -28,4 +28,10 @@
   font-size: 20px;
   cursor: pointer;
   color: #dbdbdb;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    min-width: 360px;
+  }
 }
