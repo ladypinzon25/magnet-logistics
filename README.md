@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Magnet Logistics
 
-## Getting Started
+A responsive logistics dashboard built with **Next.js**, allowing users to view, add, edit, delete, and manage bookings with real-time updates and local storage persistence.
 
-First, run the development server:
+![Booking Dashboard](./public/demo-desktop.png)
 
+![Booking Dashboard](./public/demo-mobile.png)
+
+---
+
+## ✨ Features
+
+### 📄 Desktop View
+- Displays a **table** of bookings with:
+    - Booking ID
+    - Customer Name
+    - Origin
+    - Destination
+    - Status
+    - Image (optional)
+- Bookings can be **sorted** by all fields (ascending/descending).
+- Each row includes a **menu** with actions:
+    - **Edit**: Opens a modal with validated inputs.
+    - **Delete**: Opens a confirmation modal.
+- A top-right "**Add booking**" button opens a modal to create a new booking with validated fields.
+
+### 📱 Mobile View
+- Displays **booking cards** instead of a table for better responsiveness.
+- Each card includes menu actions for edit/delete.
+
+### ✏️ Forms
+- Fields: Customer Name, Origin, Destination, Status, Image URL (optional)
+- **Validation**: Required fields, minimum lengths, valid characters only.
+- **Update button disabled** if no changes are made.
+
+### ♻️ Reset Data
+- Top right "Reset Data" button resets all bookings to original values.
+
+---
+
+## ⚙️ Stack & Libraries
+
+### UI
+- **No UI libraries used**
+- All components (Button, Modal, Menu, etc.) are custom-built under `components/common/`
+
+### Forms
+- [**react-hook-form**](https://react-hook-form.com/) for form handling and validation
+
+### Utilities
+- [**classnames**](https://www.npmjs.com/package/classnames) for merging conditional class names
+
+---
+
+## 🧱 State & Persistence
+
+### State Management
+- `useReducer` + `createContext` for global state
+- Available actions: `LOAD_BOOKINGS`, `CREATE_BOOKING`, `DELETE_BOOKING`, `UPDATE_BOOKING`
+- Hook: `useBookings()` provides state + dispatch access
+
+### Persistence
+- Bookings are also stored in **localStorage**
+- Hook: `useLoadInitialBookingsData()`
+    - Loads data from localStorage if available
+    - Otherwise fetches mock data from `https://jsonplaceholder.typicode.com/users`
+- Hook: `useUpdateBookingsInLocalStorage()`
+    - Syncs localStorage whenever bookings state changes
+- Hook: `useResetBookingsData()`
+    - Re-fetches data from API and resets both state and localStorage
+
+---
+
+## 🚀 Getting Started
+
+### Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run locally
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔎 Test Requirements Completed
 
-## Learn More
+### Main
+- [x] Display a list of bookings (id, customer name, origin, destination, status)
+- [x] Use mock data (JSONPlaceholder)
+- [x] Add a new booking
+- [x] Input form with validations
+- [x] Add booking in real-time (state + UI)
+- [x] Edit a booking
+- [x] Delete a booking
+- [x] Modal for editing
+- [x] Modal for confirming deletion
 
-To learn more about Next.js, take a look at the following resources:
+### Bonus
+- [x] TypeScript
+- [x] Filtering (search by multiple fields)
+- [x] Sorting (asc/desc)
+- [x] Responsive UI (desktop/tablet/mobile)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Deployment
+This app is ready to be deployed using [Vercel](https://vercel.com) or any platform that supports Next.js.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
