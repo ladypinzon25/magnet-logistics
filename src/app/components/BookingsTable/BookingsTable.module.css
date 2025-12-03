@@ -37,6 +37,26 @@
   cursor: pointer;
 }
 
+.sortIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+}
+
+.sortPriority {
+  font-size: 0.7em;
+  background-color: var(--primary-color);
+  color: #00151c;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
 .productImage {
   max-width: 120px;
   max-height: 120px;
