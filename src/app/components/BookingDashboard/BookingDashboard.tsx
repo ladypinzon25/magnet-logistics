@@ -7,11 +7,12 @@ import { useBookings } from "@/app/hooks/useBookings";
 import { BookingsTable } from "@/app/components/BookingsTable/BookingsTable";
 import { AddBookingModal } from "@/app/components/AddBookingModal/AddBookingModal";
 import { Button } from "@/app/components/common/Button/Button";
-import { Booking } from "@/app/types/bookings";
+import { Booking, Status } from "@/app/types/bookings";
 import { EditBookingModal } from "@/app/components/EditBookingModal/EditBookingModal";
 import { ConfirmDeletionModal } from "@/app/components/ConfirmDeletionModal/ConfirmDeletionModal";
 import { useResetBookingsData } from "@/app/hooks/useResetBookingsData";
 import { Search } from "@/app/components/Search/Search";
+import { StatusFilter } from "@/app/components/StatusFilter/StatusFilter";
 import { BookingCardList } from "@/app/components/BookingCardList/BookingCardList";
 import styles from "./BookingDashboard.module.css";
 
@@ -26,33 +27,45 @@ export const BookingDashboard = () => {
     string | undefined
   >();
   const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<Status | "">("");
   const [filteredBookings, setFilteredBookings] = useState<Booking[]>([]);
 
   useLoadInitialBookingsData();
   useUpdateBookingsInLocalStorage();
 
   useEffect(() => {
-    if (!searchQuery.trim()) {
-      setFilteredBookings(state.bookings);
-      return;
+    let results = state.bookings;
+
+    // Apply status filter
+    if (statusFilter) {
+      results = results.filter((b) => b.status === statusFilter);
     }
 
-    const lower = searchQuery.toLowerCase();
-    const results = state.bookings.filter((b) =>
-      [b.id, b.customerName, b.origin, b.destination, b.status].some((value) =>
-        value.toLowerCase().includes(lower)
-      )
-    );
+    // Apply search query filter
+    if (searchQuery.trim()) {
+      const lower = searchQuery.toLowerCase();
+      results = results.filter((b) =>
+        [b.id, b.customerName, b.origin, b.destination, b.status].some((value) =>
+          value.toLowerCase().includes(lower)
+        )
+      );
+    }
 
     setFilteredBookings(results);
-  }, [searchQuery, state.bookings]);
+  }, [searchQuery, statusFilter, state.bookings]);
 
   return (
     <div className={styles.bookingList}>
       <h1>Magnet logistics</h1>
 
       <div className={styles.actions}>
-        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <div className={styles.filters}>
+          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <StatusFilter
+            selectedStatus={statusFilter}
+            onStatusChange={setStatusFilter}
+          />
+        </div>
         <div className={styles.actionButtons}>
           <Button onClick={handleResetData} variant="transparent">
             Reset data
